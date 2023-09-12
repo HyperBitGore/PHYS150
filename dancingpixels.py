@@ -12,21 +12,10 @@ cp.pixels.fill((50, 50, 50))
 
 colors = {(255, 50, 50), (25, 255, 25), (25, 25, 255), (150, 150, 50), (150, 50, 150), (50, 150, 150), (0, 0, 0), (0, 0, 0), (0, 0, 0), (0, 0, 0)}
 
-up = False
+
 speed = 0.1
 
 while True:
-    if(up):
-        speed += 0.01
-    else:
-        speed -= 0.01
-
-    if(speed <= 0.04):
-        speed = 0.04
-        up = True
-    elif(speed >= 0.1):
-        speed = 0.1
-        up = False
 
     speed = 0.03
     for pn in range(0,10,1):
