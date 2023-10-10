@@ -8,7 +8,17 @@ c = 0;
 last = 0
 total = 0;
 while True:
-    x, y, z = cp.acceleration
+    sumx = 0
+    sumy = 0
+    sumz = 0
+    for i in range(0, 50, 1):
+        x, y, z = cp.acceleration
+        sumx += x
+        sumy += y
+        sumz += z
+    x = sumx/50
+    y = sumy/50
+    z = sumz/50
     r = int(abs(x / grav * 127))
     g = int(abs(y / grav * 127))
     b = int(abs(z / grav * 127))
@@ -40,4 +50,4 @@ while True:
         total = 0
         c = 0
 
-    time.sleep(0.01)
+    #time.sleep(0.0001)
