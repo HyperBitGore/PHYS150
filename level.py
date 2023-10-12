@@ -1,6 +1,3 @@
-# this is a basic exampe from adafruit that spits ax, ay, az to serial
-# https://learn.adafruit.com/make-it-shake-rattle-and-roll/use-in-circuitpython
-
 import time
 import math
 from adafruit_circuitplayground.express import cpx
@@ -38,24 +35,29 @@ while True:
     lastx = 0
     lastz = 0
     lasty = 0
-    for i in range(0, 10, 1):
+    for i in range(0, 30, 1):
         x, y, z = cpx.acceleration
-        if(abs(x - lastx) > 10):
+        if(i == 0):
+            lastx = x
+            lasty = y
+            lastz = z
+        if(abs(x - lastx) > 5):
             i -= 1
-        elif(abs(z - lastz) > 10):
+        elif(abs(z - lastz) > 5):
             i -= 1
-        elif(abs(y - lasty) > 10):
+        elif(abs(y - lasty) > 5):
             i -= 1
         else:
             sumx += x
             sumy += y
             sumz += z
-        lastx = x
-        lasty = y
-        lastz = z
-    x = sumx/10
-    y = sumy/10
-    z = sumz/10
+            lastx = x
+            lasty = y
+            lastz = z
+        time.sleep(0.01)
+    x = sumx/30
+    y = sumy/30
+    z = sumz/30
     time.sleep(0.1)
     if cpx.button_a:
         mode+=1
@@ -81,11 +83,9 @@ while True:
         red = 255 * (1 - (abs(angle)/90))
         green = 0
         blue = 0
-    #cpx.pixels.brightness = (1-(.95*abs(angle)/90))**5
-    #print(mode)
 
     cpx.pixels.brightness = 0.1
-    if abs(angle)< 3.0:
+    if abs(angle)< 1.5:
         cpx.pixels.fill((0,150,0))
         #time.sleep(1.0)
     else:
