@@ -19,7 +19,20 @@ def flash_leds(start, end, color):
         cp.pixels[i] = (0,0, 0)
 
 def total_count(count):
-    remaintotal = count / 500
+    tcount = count / 500
+    col = tcount % 3
+    color = (50, 0, 0)
+    if col == 0:
+        color = (50, 0, 0)
+    elif col == 1:
+        color = (0, 50, 0)
+    elif col == 2:
+        color = (0, 0, 50)
+    ma = tcount / 3
+    po = int(ma)
+    cp.pixels[po] = color
+    for i in range(0, ma, 1):
+        cp.pixels[i] = (0, 0, 50)
 
 
 
@@ -96,38 +109,14 @@ def count_steps(fp):
         t2=t3
 
         time.sleep(read_delay)
-       if cpx.button_a: #press button a to toggle steps
-                cpx.red_led:
-                if num_steps==500
-                    cp.pixels[0]=(50,50,50)
-                if num_steps==1000
-                    cp.pixels[1]=(50,50,50)
-                if num_steps==1500
-                    cp.pixels[2]=(50,50,50)
-                if num_steps==2000
-                    cp.pixels[3]=(50,50,50)
-                if num_steps==2500
-                    cp.pixels[4]=(50,50,50)
-                if num_steps==3000
-                    cp.pixels[5]=(50,50,50)
-                if num_steps==3500
-                    cp.pixels[6]=(50,50,50)
-                if num_steps==4000
-                    cp.pixels[7]=(50,50,50)
-                if num_steps==4500
-                    cp.pixels[8]=(50,50,50)
-                if num_steps==5000
-                    cp.pixels[9]=(50,50,50)
-                time.sleep(0.1)
-        if cpx.button_b: #resets step count and stops counting steps
-            cpx.red_led = False     
-            num_steps=0                 
-            time.sleep(0.02)    
+
         if cpx.button_a: #press button a to record the # of steps to "steps.txt"
             mode = False
+            flash_leds(0, 10, (0, 50, 0))
             time.sleep(0.1)
         elif cpx.button_b:
             mode = True
+            flash_leds(0, 10, (50, 0, 0))
             time.sleep(0.02)
         if mode == True:
             total_count(num_steps)
