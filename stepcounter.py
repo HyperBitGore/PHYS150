@@ -98,25 +98,25 @@ def count_steps(fp):
         time.sleep(read_delay)
        if cpx.button_a: #press button a to toggle steps
                 cpx.red_led:
-                if num_steps==1
+                if num_steps==500
                     cp.pixels[0]=(50,50,50)
-                if num_steps==2
+                if num_steps==1000
                     cp.pixels[1]=(50,50,50)
-                if num_steps==3
+                if num_steps==1500
                     cp.pixels[2]=(50,50,50)
-                if num_steps==4
+                if num_steps==2000
                     cp.pixels[3]=(50,50,50)
-                if num_steps==5
+                if num_steps==2500
                     cp.pixels[4]=(50,50,50)
-                if num_steps==6
+                if num_steps==3000
                     cp.pixels[5]=(50,50,50)
-                if num_steps==7
+                if num_steps==3500
                     cp.pixels[6]=(50,50,50)
-                if num_steps==8
+                if num_steps==4000
                     cp.pixels[7]=(50,50,50)
-                if num_steps==9
+                if num_steps==4500
                     cp.pixels[8]=(50,50,50)
-                if num_steps==10
+                if num_steps==5000
                     cp.pixels[9]=(50,50,50)
                 time.sleep(0.1)
         if cpx.button_b: #resets step count and stops counting steps
