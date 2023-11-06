@@ -11,7 +11,6 @@ import math
 from adafruit_circuitplayground.express import cpx
 from adafruit_circuitplayground import cp
 
-
 def flash_leds(start, end, color):
     for i in range(start, end, 1):
         cp.pixels[i] = color
@@ -22,9 +21,17 @@ def flash_leds(start, end, color):
 def total_count(count):
     remaintotal = count / 500
 
-def basic_count(count):
+
+
+def basic_count(count, lcount, color):
+    rt = False
+    lcur = lcount % 10
     cur = count % 10
-    cp.pixels[cur] = (0, 50, 0)
+    if cur == 0:
+        if lcur != cur:
+            rt = True
+    cp.pixels[cur] = color
+    return rt
 
 def count_steps(fp):
     cp.pixels.brightness = 0.05
@@ -52,6 +59,9 @@ def count_steps(fp):
     t2 = time.monotonic()
 
     mode = False
+    color = (50, 0, 0)
+    inc = 0
+    lcount = num_steps
     while True:
         #flash_leds(0, 10)
         # fine the (pythagorean) magnitude of acceleration, scaled by g
@@ -96,7 +106,18 @@ def count_steps(fp):
         if mode == True:
             total_count(num_steps)
         else:
-            basic_count(num_steps)
+            rt = basic_count(num_steps,lcount, color)
+            if rt == True:
+               inc += 1
+            if inc == 0:
+                color = (50, 0, 0)
+            elif inc == 1:
+                color = (0, 50, 0)
+            elif inc == 2:
+                color = (0, 0, 50)
+            else:
+                inc = 0
+        lcount = num_steps
 
 
 #will try and see if a file is writeable, if it is it continues, if not it goes to the except statement
@@ -112,6 +133,6 @@ except OSError as e:
     delay = 8
     if e.args[0] == 28:
         delay = 4
-    cp.pixels[1]=(50,0,0)
+    #cp.pixels[1]=(50,0,0)
     fp=1
     count_steps(fp)
