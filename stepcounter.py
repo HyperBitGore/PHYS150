@@ -96,7 +96,30 @@ def count_steps(fp):
         t2=t3
 
         time.sleep(read_delay)
-
+        
+        if cpx.button_a: #press button a to toggle steps
+            cpx.red_led:
+            if num_steps==1
+                cp.pixels[0]=(50,50,50)
+            if num_steps==2
+                cp.pixels[1]=(50,50,50)
+            if num_steps==3
+                cp.pixels[2]=(50,50,50)
+            if num_steps==4
+                cp.pixels[3]=(50,50,50)
+            if num_steps==5
+                cp.pixels[4]=(50,50,50)
+            if num_steps==6
+                cp.pixels[5]=(50,50,50)
+            if num_steps==7
+                cp.pixels[6]=(50,50,50)
+            if num_steps==8
+                cp.pixels[7]=(50,50,50)
+            if num_steps==9
+                cp.pixels[8]=(50,50,50)
+            if num_steps==10
+                cp.pixels[9]=(50,50,50)
+            time.sleep(0.1)
         if cpx.button_a: #press button a to record the # of steps to "steps.txt"
             mode = False
             time.sleep(0.1)
@@ -118,7 +141,7 @@ def count_steps(fp):
             else:
                 inc = 0
         lcount = num_steps
-
+    
 
 #will try and see if a file is writeable, if it is it continues, if not it goes to the except statement
 try:
